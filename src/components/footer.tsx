@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <footer>
       <Section>
-        <Container className="flex flex-col sm:flex-row justify-between items-center px-0 gap-4">
+        <Container className="flex flex-col sm:flex-row justify-between items-center px-0 gap-4 md:px-0">
           <div className="text-gray-500 text-xs font-mono mt-4 sm:mt-0 px-4">
             &copy; {new Date().getFullYear()}{" "}
             <a

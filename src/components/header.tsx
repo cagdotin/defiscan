@@ -22,8 +22,8 @@ export default function Navbar() {
         <Container className="h-8 border-dashed"></Container>
       </Section>
       <Section className="border-t">
-        <Container className="px-0">
-          <div className="flex h-20 items-center">
+        <Container className="px-0 md:px-0">
+          <div className="flex h-16 items-center">
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center text-primary">
@@ -57,7 +57,7 @@ export default function Navbar() {
               <div className="h-full">
                 <Button
                   asChild
-                  className="h-full w-48 rounded-full hover:rounded-none transition text-sm  ease-in-out duration-600"
+                  className="h-full w-48 hover:rounded-none transition text-sm  ease-in-out duration-600"
                 >
                   <Link
                     href="/submit-review"
