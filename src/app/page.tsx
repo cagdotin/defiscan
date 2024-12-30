@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <>
       <Section>
-        <Container className="px-0">
+        <Container className="px-0 md:px-0">
           <div className="flex flex-col lg:flex-row">
             <Header />
             <DefiStats />

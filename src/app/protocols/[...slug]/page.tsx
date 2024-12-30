@@ -251,7 +251,7 @@ export default async function ProtocolPageItem({
   return (
     <article className="w-full flex flex-col">
       <Section>
-        <Container className="flex flex-col-reverse lg:flex-row p-0">
+        <Container className="flex flex-col-reverse lg:flex-row p-0 md:px-0">
           <div className="grow border-r">
             <div className="flex flex-row gap-4 items-center border-b pl-4">
               <div className="w-10 h-10 aspect-square border "></div>
