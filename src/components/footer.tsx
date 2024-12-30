@@ -1,102 +1,83 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FaLinkedinIn, FaDiscord, FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Section } from "./section";
+import { Container } from "./container";
+import { Button } from "./ui/button";
 
-const Footer: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-
-      if (scrollTop + clientHeight >= scrollHeight) {
-        setIsVisible(true);
-      } else if (scrollTop > 0) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
+export const Footer = () => {
   return (
-    <footer
-      className={`fixed bottom-0 left-0 right-0 p-4 backdrop-filter backdrop-blur-lg bg-white/30 transition-opacity duration-500 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center">
-        <div className="text-gray-500 text-sm mb-2 sm:mb-0">
-          &copy; {new Date().getFullYear()}{" "}
-          <a
-            href="https://deficollective.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-600 transition-colors duration-200"
-          >
-            DeFi Collective
-          </a>
-        </div>
-        <div>
-          <a
-            href="/terms"
-            className="text-gray-500 hover:text-gray-700 mr-4 transition-colors duration-200"
-          >
-            Terms
-          </a>
-          <a
-            href="/privacy"
-            className="text-gray-500 hover:text-gray-700 ml-4 transition-colors duration-200"
-          >
-            Privacy
-          </a>
-        </div>
-        <div className="flex space-x-4 mt-4 sm:mt-0">
-          <a
-            href="https://x.com/defiscan_info"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-blue-500 transition-colors duration-200"
-          >
-            <FaXTwitter size={24} />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/defi-collective"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-blue-500 transition-colors duration-200"
-          >
-            <FaLinkedinIn size={24} />
-          </a>
-          <a
-            href="https://discord.gg/Z467Ehv6VU"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-blue-500 transition-colors duration-200"
-          >
-            <FaDiscord size={24} />
-          </a>
-          <a
-            href="https://github.com/deficollective/defiscan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-blue-500 transition-colors duration-200"
-          >
-            <FaGithub size={24} />
-          </a>
-        </div>
-      </div>
+    <footer>
+      <Section>
+        <Container className="flex flex-col sm:flex-row justify-between items-center px-0 gap-4">
+          <div className="text-gray-500 text-xs font-mono mt-4 sm:mt-0 px-4">
+            &copy; {new Date().getFullYear()}{" "}
+            <a
+              href="https://deficollective.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              DeFi Collective
+            </a>
+          </div>
+          <div className="uppercase text-xs font-mono">
+            <a
+              href="/terms"
+              className="text-gray-500 hover:text-gray-700 mr-4 transition-colors duration-200"
+            >
+              Terms
+            </a>
+            <a
+              href="/privacy"
+              className="text-gray-500 hover:text-gray-700 ml-4 transition-colors duration-200"
+            >
+              Privacy
+            </a>
+          </div>
+          <div className="flex">
+            <Button variant="ghost" className="sm:border-x h-16 w-16" asChild>
+              <a
+                href="https://x.com/defiscan_info"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaXTwitter />
+              </a>
+            </Button>
+            <Button variant="ghost" className="sm:border-r h-16 w-16" asChild>
+              <a
+                href="https://www.linkedin.com/company/defi-collective"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedinIn />
+              </a>
+            </Button>
+            <Button variant="ghost" className="sm:border-r h-16 w-16" asChild>
+              <a
+                href="https://discord.gg/Z467Ehv6VU"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaDiscord />
+              </a>
+            </Button>
+            <Button variant="ghost" className="h-16 w-16" asChild>
+              <a
+                href="https://github.com/deficollective/defiscan"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+              </a>
+            </Button>
+          </div>
+        </Container>
+      </Section>
+      <Section className="border-none">
+        <Container className="h-8 border-dashed"></Container>
+      </Section>
     </footer>
   );
 };
-
-export default Footer;
