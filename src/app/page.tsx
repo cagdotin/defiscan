@@ -79,7 +79,7 @@ export default function Home() {
         </Container>
       </Section>
       <Section className="border-0">
-        <Container className="px-0">
+        <Container className="px-0 md:px-0">
           <Table />
           <div className="grow" />
         </Container>

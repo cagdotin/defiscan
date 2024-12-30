@@ -1,6 +1,8 @@
 "use client";
 
+import React from "react";
 import {
+  Row as RowType,
   ColumnDef,
   ColumnFiltersState,
   flexRender,
@@ -14,6 +16,8 @@ import {
   getFacetedRowModel,
   getPaginationRowModel,
   VisibilityState,
+  getExpandedRowModel,
+  ExpandedState,
 } from "@tanstack/react-table";
 
 import {
@@ -29,6 +33,7 @@ import { Input } from "@/components/ui/input";
 import { useEffect, useMemo, useState } from "react";
 import { DataTableToolbar } from "./toolbar";
 import { chains, types } from "./data";
+import { cn } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -52,6 +57,10 @@ const getInitialVisibility = (columns: ColumnDef<any, any>[]) => {
   });
 
   return initialState;
+};
+
+const openProtocolReview = (slug: string) => {
+  window.location.href = slug;
 };
 
 const useResponsiveColumns = (
@@ -79,6 +88,51 @@ const useResponsiveColumns = (
   }, [table, mobileBreakpoint]);
 };
 
+const renderTableBody = <TData, TValue>(
+  table: TableType<TData>,
+  columns: ColumnDef<TData, TValue>[]
+) => {
+  if (table.getRowModel().rows?.length) {
+    return table.getRowModel().rows.map((row) => {
+      const handleClick = () => {
+        // Expand the row if it is expandable.
+        if (row.getCanExpand()) {
+          row.getToggleExpandedHandler()();
+          return;
+        }
+
+        // Go to protocol review page if not.
+        openProtocolReview((row as any).original.slug);
+      };
+
+      return (
+        <TableRow
+          key={row.id}
+          onClick={handleClick}
+          className={cn(row.depth > 0 && "bg-gray-400/40 hover:bg-gray-400/60")}
+        >
+          {row.getVisibleCells().map((cell) => (
+            <TableCell key={cell.id}>
+              {flexRender(cell.column.columnDef.cell, cell.getContext())}
+            </TableCell>
+          ))}
+        </TableRow>
+      );
+    });
+  }
+
+  // TODO: add loading state.
+
+  // No Rows found.
+  return (
+    <TableRow>
+      <TableCell colSpan={columns.length} className="h-24 text-center">
+        No results.
+      </TableCell>
+    </TableRow>
+  );
+};
+
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -87,6 +141,7 @@ export function DataTable<TData, TValue>({
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [expanded, setExpanded] = useState<ExpandedState>({});
 
   const table = useReactTable({
     data,
@@ -96,6 +151,7 @@ export function DataTable<TData, TValue>({
       columnVisibility,
       rowSelection,
       columnFilters,
+      expanded,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
@@ -108,6 +164,13 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+    getExpandedRowModel: getExpandedRowModel(),
+    // @ts-expect-error
+    getSubRows: (row) => row.children,
+    // @ts-expect-error
+    getRowCanExpand: (row) => row?.children,
+    onExpandedChange: setExpanded,
+
     initialState: {
       sorting: [
         {
@@ -120,11 +183,6 @@ export function DataTable<TData, TValue>({
 
   useResponsiveColumns(table);
 
-  // Navigate to the protocol's page when the row is clicked
-  const handleRowClick = (slug: string) => {
-    window.location.href = slug;
-  };
-
   return (
     <div className="w-full">
       <DataTableToolbar chains={chains} types={types} table={table} />
@@ -132,46 +190,18 @@ export function DataTable<TData, TValue>({
         <TableHeader className="font-mono">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id} className="hover:bg-background">
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id} className="border-b p-0">
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
+              {headerGroup.headers.map((header) => (
+                <TableHead key={header.id} className="border-b p-0">
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
+                </TableHead>
+              ))}
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                onClick={() => {
-                  handleRowClick((row as any).original.slug);
-                }}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
+        <TableBody>{renderTableBody(table, columns)}</TableBody>
       </Table>
     </div>
   );

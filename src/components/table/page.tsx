@@ -27,5 +27,53 @@ export default function Table() {
     fetchData();
   }, []);
 
-  return <DataTable columns={columns} data={data || []} />;
+  console.log("data:: ", data);
+
+  const grouped_sample =
+    data?.reduce((acc, curr) => {
+      let protocol = acc[curr.protocol] || {
+        protocol: curr.protocol,
+        logo: curr.logo,
+        type: curr.type,
+        tvl: 0,
+        stage: curr.stage,
+        chain: [],
+        children: [],
+      };
+
+      const children = [...protocol.children, curr];
+      protocol.tvl += curr.tvl;
+      protocol.chain = [...protocol.chain, curr.chain];
+
+      // if the stages of all children doesn't match.
+      // make it -1 to indicate variable stage.
+      if (protocol.stage !== curr.stage) {
+        protocol.stage = "V";
+      }
+
+      protocol = {
+        ...protocol,
+        children,
+      };
+
+      return {
+        ...acc,
+        [curr.protocol]: protocol,
+      };
+    }, {}) || {};
+
+  const sample = Object.values(grouped_sample).map((project) => {
+    const { children, ...rest } = project;
+
+    if (children.length === 1) {
+      return {
+        ...rest,
+        ...children[0],
+      };
+    }
+
+    return project;
+  });
+
+  return <DataTable columns={columns} data={sample || []} />;
 }
