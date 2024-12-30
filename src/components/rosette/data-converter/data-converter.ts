@@ -57,6 +57,8 @@ export function getRiskDescriptions(risks: RiskArray): {
   sentiment: Sentiment;
   description: string;
 }[] {
+  if (!risks) return [];
+
   // const parsedRisks = JSON.parse(risks.replace(/'/g, '"'));
   return risks.map((level: RiskLevel, index: number) => {
     const category = categories[index];

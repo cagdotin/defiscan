@@ -58,17 +58,11 @@ export function BadgeTooltip({ stage }: { stage: Stage }) {
         <span className="mr-2">Stage of Decentralisation</span>
       </span>
       <div className="relative flex flex-col justify-center py-4 max-w-md font-mono">
-        {stage === "R"
-          ? stageToRequisites[0].map((item, index) => (
-              <div key={index} className="mt-1">
-                {item}
-              </div>
-            ))
-          : stageToRequisites.slice(1)[stage].map((item, index) => (
-              <div key={index} className="mt-1">
-                {item}
-              </div>
-            ))}
+        {stageToRequisites[stage].map((item, index) => (
+          <div key={index} className="mt-1">
+            {item}
+          </div>
+        ))}
       </div>
     </div>
   );
