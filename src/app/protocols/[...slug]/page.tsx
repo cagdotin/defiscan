@@ -298,7 +298,7 @@ export default async function ProtocolPageItem({
               <TableOfContents protocol={protocol} />
             </div>
           </div>
-          <div className="pt-4 px-8 grow w-1/2">
+          <div className="pt-4 px-2 md:px-8 grow w-1/2">
             <div className="prose max-w-none">
               <Mdx code={protocol.body!} />
             </div>

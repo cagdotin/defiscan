@@ -18,13 +18,13 @@ type ComponentsProps = HTMLAttributes<HTMLElement>;
 
 const components = {
   h1: ({ className, ...props }: ComponentsProps) => (
-    <h1 className={cn("", className)} {...props} />
+    <h1 className={cn("text-2xl md:text-4xl", className)} {...props} />
   ),
   h2: ({ className, ...props }: ComponentsProps) => (
-    <h2 className={cn("", className)} {...props} />
+    <h2 className={cn("text-lg md:text-2xl", className)} {...props} />
   ),
   h3: ({ className, ...props }: ComponentsProps) => (
-    <h3 className={cn("", className)} {...props} />
+    <h3 className={cn("text-base md:text-xl", className)} {...props} />
   ),
   a: ({ className, href = "", ...props }: AnchorProps) => {
     const isInternal = href.startsWith("#") || href.startsWith("/");
@@ -44,7 +44,10 @@ const components = {
     );
   },
   p: ({ className, ...props }: ComponentsProps) => (
-    <p className={className} {...props} />
+    <p
+      className={cn("break-words text-sm md:text-normal", className)}
+      {...props}
+    />
   ),
   ul: ({ className, ...props }: ComponentsProps) => (
     <ul className={className} {...props} />
