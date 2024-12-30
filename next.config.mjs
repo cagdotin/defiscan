@@ -6,6 +6,7 @@ const nextConfig = {
     config.plugins.push(new VeliteWebpackPlugin());
     return config;
   },
+  transpilePackages: ["geist"],
 };
 
 class VeliteWebpackPlugin {

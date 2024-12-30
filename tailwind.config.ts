@@ -22,8 +22,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        lexend: ["var(--font-lexend)", ...fontFamily.sans],
-        code: ["var(--font-code)", ...fontFamily.sans],
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
       },
       fontSize: {
         xxs: "0.6rem", // Example size (10px)
@@ -92,7 +92,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require("tailwindcss-animate")
+  ],
 } satisfies Config;
 
 export default config;
