@@ -125,7 +125,7 @@ const stagesData = [
     description:
       "The review of a protocol cannot be completed due to missing information or a change in conditions. As a result, the analysis is incomplete or inaccurate and the Stage unclear.",
     qualifications: [
-      "✅ Analysis is in the process of being completed, corrected or reviewed"
+      "✅ Analysis is in the process of being completed, corrected or reviewed",
     ],
   },
 ];
@@ -148,50 +148,32 @@ function createIdFromTitle(title: string) {
 const IntroSection = () => (
   <>
     <a href={`#${createIdFromTitle("WTF is DeFiScan?")}`}>
-      <h1
-        id={createIdFromTitle("WTF is DeFiScan?")}
-        className="inline-block tracking-tight text-primary font-bold text-2xl sm:text-2xl md:text-3xl lg:text-4xl"
-        style={{ scrollMarginTop: "100px" }}
-      >
-        {introContent.title}
-      </h1>
+      <h1 id={createIdFromTitle("WTF is DeFiScan?")}>{introContent.title}</h1>
     </a>
 
-    <div className="flex-1 mt-6 text-center text-muted-foreground lg:text-start xl:text-base">
+    <div>
       {introContent.paragraphs.map((paragraph, index) => (
-        <p key={index} className={index > 0 ? "mt-4" : ""}>
-          {paragraph}
-        </p>
+        <p key={index}>{paragraph}</p>
       ))}
-      <ul className="list-disc ml-6">
+      <ul>
         {introContent.bulletPoints.map((point, index) => (
           <li key={index}>{point}</li>
         ))}
       </ul>
       <br></br>
-      <h1 className="inline-block tracking-tight mb-6 text-primary font-bold text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
-        {introContent2.title}
-      </h1>
+      <h1>{introContent2.title}</h1>
       {introContent2.paragraphs.map((paragraph, index) => (
-        <p key={index} className={index > 0 ? "mt-4" : ""}>
-          {paragraph}
-        </p>
+        <p key={index}>{paragraph}</p>
       ))}
-      <ul className="list-disc ml-6">
+      <ul>
         {introContent2.bulletPoints.map((point, index) => (
           <li key={index}>{point}</li>
         ))}
       </ul>
-      <p className="mt-4">
+      <p>
         Here we provide an overview of the framework. For a more detailed
         discussion, please refer to the introduction{" "}
-        <a
-          href={introContent.blogLink.url}
-          className="font-medium text-primary hover:underline"
-        >
-          {introContent.blogLink.text}
-        </a>
-        .
+        <a href={introContent.blogLink.url}>{introContent.blogLink.text}</a>.
       </p>
     </div>
   </>
@@ -200,11 +182,7 @@ const IntroSection = () => (
 const RisksSection = () => (
   <>
     <a href={`#${createIdFromTitle("DeFi Centralization Risks")}`}>
-      <h1
-        id={createIdFromTitle("DeFi Centralization Risks")}
-        className="inline-block mt-10 tracking-tight text-primary font-bold text-2xl sm:text-2xl md:text-3xl lg:text-4xl"
-        style={{ scrollMarginTop: "100px" }}
-      >
+      <h1 id={createIdFromTitle("DeFi Centralization Risks")}>
         DeFi Centralization Risks
       </h1>
     </a>
@@ -221,22 +199,16 @@ const RisksSection = () => (
               <AccordionContent>
                 <div className="space-y-4">
                   <div>
-                    <span className="inline-block mb-2 px-2 py-1 bg-red-500 text-white rounded">
-                      High
-                    </span>
-                    <p className="text-sm">{item.risks.high}</p>
+                    <span>High</span>
+                    <p>{item.risks.high}</p>
                   </div>
                   <div>
-                    <span className="inline-block mb-2 px-2 py-1 bg-yellow-500 text-white rounded">
-                      Medium
-                    </span>
-                    <p className="text-sm">{item.risks.medium}</p>
+                    <span>Medium</span>
+                    <p>{item.risks.medium}</p>
                   </div>
                   <div>
-                    <span className="inline-block mb-2 px-2 py-1 bg-green-500 text-white rounded">
-                      Low
-                    </span>
-                    <p className="text-sm">{item.risks.low}</p>
+                    <span>Low</span>
+                    <p>{item.risks.low}</p>
                   </div>
                 </div>
               </AccordionContent>
@@ -281,11 +253,7 @@ const RisksSection = () => (
 const StagesSection = () => (
   <>
     <a href={`#${createIdFromTitle("DeFi Stages Framework")}`}>
-      <h1
-        id={createIdFromTitle("DeFi Stages Framework")}
-        className="inline-block mt-10 tracking-tight text-primary font-bold text-2xl sm:text-2xl md:text-3xl lg:text-4xl"
-        style={{ scrollMarginTop: "100px" }}
-      >
+      <h1 id={createIdFromTitle("DeFi Stages Framework")}>
         DeFi Stages Framework
       </h1>
     </a>
@@ -354,40 +322,37 @@ const StagesSection = () => (
 const SecurityCouncilSection = () => (
   <>
     <a href={`#${createIdFromTitle("Security Council Requirements")}`}>
-      <h1
-        id={createIdFromTitle("Security Council Requirements")}
-        className="mt-10 text-primary font-bold text-2xl sm:text-2xl md:text-3xl lg:text-4xl"
-        style={{ scrollMarginTop: "100px" }}
-      >
+      <h1 id={createIdFromTitle("Security Council Requirements")}>
         Security Council Requirements
       </h1>
     </a>
 
-    <div className="flex-1 my-6 text-left text-muted-foreground lg:text-start xl:text-base">
-      <p className="mb-4">
-        A Security Council can represent an effective intermediate step of decentralized control over permissions that cannot be revoked or protected with an Exit Window.
-        In particular, a Security Council enables a protocol to mitigate risks of centralized control over such permissions and enter Stage 1.
-      </p>
-      <p className="mb-4">
-        Any multisig account with the following minimal requirements is an acceptable
-        Security Council setup:
-      </p>
-      <ul className="list-disc ml-6">
-        {securityCouncilRequirements.map((requirement, index) => (
-          <li key={index}>{requirement}</li>
-        ))}
-      </ul>
-    </div>
+    <p>
+      A Security Council can represent an effective intermediate step of
+      decentralized control over permissions that cannot be revoked or protected
+      with an Exit Window. In particular, a Security Council enables a protocol
+      to mitigate risks of centralized control over such permissions and enter
+      Stage 1.
+    </p>
+    <p>
+      Any multisig account with the following minimal requirements is an
+      acceptable Security Council setup:
+    </p>
+    <ul>
+      {securityCouncilRequirements.map((requirement, index) => (
+        <li key={index}>{requirement}</li>
+      ))}
+    </ul>
   </>
 );
 
 export default function LearnMorePage() {
   return (
-    <div className="container relative mb-20 max-w-6xl py-6 lg:py-10">
+    <>
       <IntroSection />
       <RisksSection />
       <StagesSection />
       <SecurityCouncilSection />
-    </div>
+    </>
   );
 }
