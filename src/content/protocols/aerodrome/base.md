@@ -5,7 +5,7 @@ x: "https://x.com/AerodromeFi"
 github: ["https://github.com/aerodrome-finance"]
 defillama_slug: ["aerodrome-v1", "aerodrome-slipstream"]
 chain: "Base"
-stage: 0
+stage: 1
 risks: ["H", "M", "L", "M", "L"]
 author: ["CookingCryptos", "sagaciousyves"]
 submission_date: "2024-10-23"
