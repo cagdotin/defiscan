@@ -40,13 +40,13 @@ const Chart: React.FC<ChartProps> = ({ className }) => {
   }, []);
 
   return (
-    <Card className={"w-2/3" + className}>
+    <Card className={className}>
       <CardHeader>
-        <div className="-mt-4 -mb-">
-          <CardDescription>Total Value Locked (TVL) in DeFi</CardDescription>
-        </div>
+        <CardDescription className="flex items-center">
+          <span>Total Value Locked (TVL) in DeFi</span>
+        </CardDescription>
       </CardHeader>
-      <CardContent className="px-2 sm:p-6">
+      <CardContent className="p-0">
         <ChartContainer
           config={chartConfig}
           className="aspect-auto h-[200px] w-full"
@@ -82,6 +82,18 @@ const Chart: React.FC<ChartProps> = ({ className }) => {
             />
           </AreaChart>
         </ChartContainer>
+
+        {/* <p className="text-xs flex gap-1 ml-auto justify-end px-4 py-2">
+          Data source:
+          <a
+            className="inline underline flex justify-center"
+            href="https://defillama.com/"
+            target="_blank"
+          >
+            DefiLlama
+            <ExternalLink className="w-3 h-3 ml-1" />
+          </a>
+        </p> */}
       </CardContent>
     </Card>
   );
