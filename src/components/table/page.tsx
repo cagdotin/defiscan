@@ -2,9 +2,7 @@
 
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
-import { protocols } from "#site/content";
 import { useEffect, useState } from "react";
-import { defiLlama } from "@/services/defillama";
 import { Project } from "@/lib/types";
 import { mergeDefiLlamaWithMd } from "../pie-charts/piechart";
 
@@ -27,10 +25,8 @@ export default function Table() {
     fetchData();
   }, []);
 
-  console.log("data:: ", data);
-
-  const grouped_sample =
-    data?.reduce((acc, curr) => {
+  const grouped =
+    data?.reduce((acc: Record<string, any>, curr) => {
       let protocol = acc[curr.protocol] || {
         protocol: curr.protocol,
         logo: curr.logo,
@@ -62,8 +58,11 @@ export default function Table() {
       };
     }, {}) || {};
 
-  const sample = Object.values(grouped_sample).map((project) => {
-    const { children, ...rest } = project;
+  const projects = Object.values(grouped).map((project: any) => {
+    const { children, ...rest } = project as {
+      children: any[];
+      [key: string]: any;
+    };
 
     if (children.length === 1) {
       return {
@@ -75,5 +74,5 @@ export default function Table() {
     return project;
   });
 
-  return <DataTable columns={columns} data={sample || []} />;
+  return <DataTable columns={columns} data={projects} />;
 }
