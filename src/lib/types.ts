@@ -1,5 +1,5 @@
 export type RiskLevel = "L" | "M" | "H";
-export type Stage = "R" | 0 | 1 | 2;
+export type Stage = "V" | "R" | 0 | 1 | 2;
 export type RiskArray = [RiskLevel, RiskLevel, RiskLevel, RiskLevel, RiskLevel];
 
 export type Project = {
@@ -11,4 +11,5 @@ export type Project = {
   type: string;
   chain: string;
   tvl: number;
+  children?: Project[];
 };
