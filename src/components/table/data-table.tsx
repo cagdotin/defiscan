@@ -6,10 +6,14 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getFacetedUniqueValues,
   getSortedRowModel,
   SortingState,
   useReactTable,
   Table as TableType,
+  getFacetedRowModel,
+  getPaginationRowModel,
+  VisibilityState,
 } from "@tanstack/react-table";
 
 import {
@@ -23,6 +27,8 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { useEffect, useMemo, useState } from "react";
+import { DataTableToolbar } from "./toolbar";
+import { chains, types } from "./data";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -77,35 +83,31 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([
-    {
-      id: "tvl",
-      desc: true,
-    },
-  ]);
+  const [rowSelection, setRowSelection] = useState({});
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-
-  const initialVisibility = useMemo(
-    () => getInitialVisibility(columns),
-    [columns]
-  );
-
-  const [columnVisibility, setColumnVisibility] = useState(initialVisibility);
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
-      columnFilters,
       columnVisibility,
+      rowSelection,
+      columnFilters,
     },
+    enableRowSelection: true,
+    onRowSelectionChange: setRowSelection,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    onColumnVisibilityChange: setColumnVisibility,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
     initialState: {
       sorting: [
         {
@@ -124,26 +126,15 @@ export function DataTable<TData, TValue>({
   };
 
   return (
-    <div className="rounded-md w-full">
-      <div className="flex flex-row items-center py-2">
-        <Input
-          placeholder="Search protocol"
-          value={
-            (table.getColumn("protocol")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event: any) =>
-            table.getColumn("protocol")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm border border-grey"
-        />
-      </div>
+    <div className="w-full">
+      <DataTableToolbar chains={chains} types={types} table={table} />
       <Table className="">
-        <TableHeader>
+        <TableHeader className="font-mono">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id} className="hover:bg-background">
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="border-b px-4 py-2">
+                  <TableHead key={header.id} className="border-b p-0">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -165,7 +156,6 @@ export function DataTable<TData, TValue>({
                   handleRowClick((row as any).original.slug);
                 }}
                 data-state={row.getIsSelected() && "selected"}
-                className="hover:bg-accent cursor-pointer transition"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

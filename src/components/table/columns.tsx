@@ -5,10 +5,10 @@ import { ColumnDef } from "@tanstack/react-table";
 import { TooltipProvider } from "../rosette/tooltip/tooltip";
 import { PizzaRosetteCell } from "../rosette/rosette-cell";
 import { getRiskDescriptions } from "../rosette/data-converter/data-converter";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "../ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { Project, RiskArray, Stage } from "@/lib/types";
+import { InfoBadge } from "../ui/info-badge";
 
 export const columns: ColumnDef<Project>[] = [
   {
@@ -40,7 +40,7 @@ export const columns: ColumnDef<Project>[] = [
     header: ({ column }) => {
       return (
         <Button
-          className="text-left justify-start p-0 text-xs md:text-sm"
+          className="text-left justify-start text-xs md:text-sm  h-16 !w-full"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -59,7 +59,7 @@ export const columns: ColumnDef<Project>[] = [
     header: ({ column }) => {
       return (
         <Button
-          className="p-0 text-xs md:text-sm"
+          className="text-xs md:text-sm  h-16 !w-full"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -71,22 +71,24 @@ export const columns: ColumnDef<Project>[] = [
     cell: ({ row }) => {
       const stage = row.getValue("stage") as Stage;
       return (
-        <TooltipProvider>
-          <Badge
-            stage={stage}
-            className={`${
-              stage === "R"
-                ? "bg-gray-500"
-                : stage === 0
-                  ? "bg-red-500"
-                  : stage === 1
-                    ? "bg-yellow-500"
-                    : "bg-green-500"
-            } text-white py-1 rounded "text-lg"`}
-          >
-            {stage === "R" ? "Review" : "Stage " + stage}
-          </Badge>
-        </TooltipProvider>
+        <div className="w-full flex">
+          <TooltipProvider>
+            <InfoBadge
+              stage={stage}
+              className={`${
+                stage === "R"
+                  ? "bg-gray-500"
+                  : stage === 0
+                    ? "bg-red-500"
+                    : stage === 1
+                      ? "bg-yellow-500"
+                      : "bg-green-500"
+              } text-white py-1 rounded "text-lg" mx-auto`}
+            >
+              {stage === "R" ? "Review" : "Stage " + stage}
+            </InfoBadge>
+          </TooltipProvider>
+        </div>
       );
     },
     sortingFn: "alphanumeric", // use built-in sorting function by name
@@ -101,10 +103,12 @@ export const columns: ColumnDef<Project>[] = [
 
       return (
         <TooltipProvider>
-          <PizzaRosetteCell
-            values={getRiskDescriptions(risks)}
-            isUnderReview={false}
-          />
+          <div className="flex w-full justify-center">
+            <PizzaRosetteCell
+              values={getRiskDescriptions(risks)}
+              isUnderReview={false}
+            />
+          </div>
         </TooltipProvider>
       );
     },
@@ -115,7 +119,7 @@ export const columns: ColumnDef<Project>[] = [
       return (
         <Button
           // Remove hidden class to prevent layout shift
-          className="md:flex hidden w-0 md:w-auto overflow-hidden p-0"
+          className="md:flex hidden w-0 md:w-auto overflow-hidden h-16 !w-full"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -126,7 +130,7 @@ export const columns: ColumnDef<Project>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap">
+        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap text-center">
           <span className="hidden md:inline">{row.getValue("type")}</span>
         </div>
       );
@@ -135,6 +139,9 @@ export const columns: ColumnDef<Project>[] = [
     meta: {
       responsiveHidden: true, // This column will hide on mobile
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "chain",
@@ -142,7 +149,7 @@ export const columns: ColumnDef<Project>[] = [
       return (
         <Button
           // Remove hidden class to prevent layout shift
-          className="md:flex hidden w-0 md:w-auto overflow-hidden p-0"
+          className="md:flex hidden w-0 md:w-auto overflow-hidden h-16 !w-full"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -153,7 +160,7 @@ export const columns: ColumnDef<Project>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap">
+        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap text-center">
           <span className="hidden md:inline">{row.getValue("chain")}</span>
         </div>
       );
@@ -162,6 +169,9 @@ export const columns: ColumnDef<Project>[] = [
     meta: {
       responsiveHidden: true, // This column will hide on mobile
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "tvl",
@@ -169,7 +179,7 @@ export const columns: ColumnDef<Project>[] = [
       return (
         <Button
           // Remove hidden class to prevent layout shift
-          className="md:flex hidden w-0 md:w-auto overflow-hidden p-0"
+          className="md:flex hidden w-0 md:w-auto overflow-hidden h-16 !w-full"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >

@@ -27,9 +27,5 @@ export default function Table() {
     fetchData();
   }, []);
 
-  return (
-    <div className="mx-auto w-full">
-      <DataTable columns={columns} data={data || []} />
-    </div>
-  );
+  return <DataTable columns={columns} data={data || []} />;
 }
