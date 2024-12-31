@@ -36,7 +36,7 @@ export const Footer = () => {
             </a>
           </div>
           <div className="flex">
-            <Button variant="ghost" className="sm:border-x h-16 w-16" asChild>
+            <Button variant="ghost" className="sm:border-x h-12 w-12" asChild>
               <a
                 href="https://x.com/defiscan_info"
                 target="_blank"
@@ -45,7 +45,7 @@ export const Footer = () => {
                 <FaXTwitter />
               </a>
             </Button>
-            <Button variant="ghost" className="sm:border-r h-16 w-16" asChild>
+            <Button variant="ghost" className="sm:border-r h-12 w-12" asChild>
               <a
                 href="https://www.linkedin.com/company/defi-collective"
                 target="_blank"
@@ -54,7 +54,7 @@ export const Footer = () => {
                 <FaLinkedinIn />
               </a>
             </Button>
-            <Button variant="ghost" className="sm:border-r h-16 w-16" asChild>
+            <Button variant="ghost" className="sm:border-r h-12 w-12" asChild>
               <a
                 href="https://discord.gg/Z467Ehv6VU"
                 target="_blank"
@@ -63,7 +63,7 @@ export const Footer = () => {
                 <FaDiscord />
               </a>
             </Button>
-            <Button variant="ghost" className="h-16 w-16" asChild>
+            <Button variant="ghost" className="h-12 w-12" asChild>
               <a
                 href="https://github.com/deficollective/defiscan"
                 target="_blank"

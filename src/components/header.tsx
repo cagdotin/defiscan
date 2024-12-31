@@ -23,14 +23,14 @@ export default function Navbar() {
       </Section>
       <Section className="border-t">
         <Container className="px-0 md:px-0">
-          <div className="flex h-16 items-center">
+          <div className="flex h-12 items-center">
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center text-primary">
                 <img
                   src="/images/defiscan_by_dc_color_for_light_background.svg"
                   alt="Logo"
-                  className="w-40 md:w-56"
+                  className="w-40 md:w-48"
                 />
               </Link>
             </div>
@@ -40,7 +40,7 @@ export default function Navbar() {
               <Button asChild variant="ghost">
                 <Link
                   href="/learn-more"
-                  className="w-32 text-muted-foreground hover:text-primary transition-colors px-4 h-full flex items-center border-r hover:border-l"
+                  className="w-28 text-muted-foreground hover:text-primary text-xs transition-colors px-4 h-full flex items-center border-r"
                 >
                   Learn more
                 </Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
               <div className="h-full">
                 <Button
                   asChild
-                  className="h-full w-48 hover:rounded-none transition text-sm  ease-in-out duration-600"
+                  className="h-full w-32 hover:rounded-none transition text-xs  ease-in-out duration-600"
                 >
                   <Link
                     href="/submit-review"

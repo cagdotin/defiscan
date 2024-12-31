@@ -7,17 +7,17 @@ import { Container } from "@/components/container";
 
 const Header = () => {
   return (
-    <div className="flex flex-col md:w-full lg:border-r">
-      <h1 className="my-auto text-primary font-bold text-2xl sm:text-2xl md:text-3xl px-8 py-12  border-b ">
-        Verifiable insights
-        <br />
-        <small>into the maturity and risks of DeFi</small>
-      </h1>
-
-      <div className="hidden lg:flex  h-24 flex-row">
-        <div className="w-1/2" />
+    <div className="flex flex-col-reverse md:flex-row w-full border-b">
+      <div className="md:border-r md:w-1/2  border-t md:border-t-0">
+        <h1 className="my-auto text-primary font-bold text-3xl sm:text-4xl  px-8 py-12">
+          Verifiable insights
+          <br />
+          <small>into the maturity and risks of DeFi</small>
+        </h1>
       </div>
-      <div className="hidden lg:flex grow"></div>
+      <div className="pb-2 md:w-1/2">
+        <Chart className="w-full border-none shadow-none" />
+      </div>
     </div>
   );
 };
@@ -25,9 +25,6 @@ const Header = () => {
 const DefiStats = () => {
   return (
     <div className="md:w-full flex flex-col">
-      <div className="border-b pb-2">
-        <Chart className="w-full border-none shadow-none" />
-      </div>
       <div className="flex flex-wrap">
         <PieChartComponent
           groupByKey="stage"
@@ -72,7 +69,7 @@ export default function Home() {
     <>
       <Section>
         <Container className="px-0 md:px-0">
-          <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col">
             <Header />
             <DefiStats />
           </div>

@@ -18,7 +18,7 @@ import { getRiskDescriptions } from "@/components/rosette/data-converter/data-co
 import { TooltipProvider } from "@/components/rosette/tooltip/tooltip";
 import { cn } from "@/lib/utils";
 import { Stage } from "@/lib/types";
-import { InfoBadge } from "@/components/ui/info-badge";
+import { StageBadge } from "@/components/stage";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 
@@ -252,34 +252,18 @@ export default async function ProtocolPageItem({
     <article className="w-full flex flex-col">
       <Section>
         <Container className="flex flex-col-reverse lg:flex-row p-0 md:px-0">
-          <div className="grow border-r">
-            <div className="flex flex-row gap-4 items-center border-b pl-4">
-              <div className="w-10 h-10 aspect-square border "></div>
-              <h1 className="text-xl sm:text-4xl shrink-0">
-                {protocol.protocol}
-              </h1>
-              <TooltipProvider>
-                <InfoBadge
-                  stage={protocol.stage! as Stage}
-                  className={cn(
-                    "text-white py-1 rounded text-lg h-20 sm:h-32 rounded-none ml-auto sm:aspect-square flex justify-center",
-                    protocol.stage! === "R" && "bg-gray-500",
-                    `${
-                      protocol.stage! === "R"
-                        ? "bg-gray-500"
-                        : protocol.stage! === 0
-                          ? "bg-red-500"
-                          : protocol.stage! === 1
-                            ? "bg-yellow-500"
-                            : "bg-green-500"
-                    } `
-                  )}
-                >
-                  {protocol.stage! === "R"
-                    ? "Review"
-                    : "Stage " + protocol.stage!}
-                </InfoBadge>
-              </TooltipProvider>
+          <div className="grow lg:border-r">
+            <div className="flex justify-between items-center border-b pl-4">
+              <div className="flex gap-4">
+                <div className="w-10 h-10 aspect-square border "></div>
+                <h1 className="text-xl sm:text-4xl shrink-0">
+                  {protocol.protocol}
+                </h1>
+              </div>
+              <StageBadge
+                stage={protocol.stage! as Stage}
+                className="h-20 sm:h-32 sm:aspect-square text-lg rounded-none"
+              />
             </div>
             <ProtocolLinks protocol={protocol} />
             <ReviewTimeline protocol={protocol} />
