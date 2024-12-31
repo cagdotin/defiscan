@@ -2,7 +2,6 @@
 
 import React from "react";
 import {
-  Row as RowType,
   ColumnDef,
   ColumnFiltersState,
   flexRender,
@@ -28,40 +27,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
 
-import { useEffect, useMemo, useState } from "react";
-import { DataTableToolbar } from "./toolbar";
-import { chains, types } from "./data";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { DataTableToolbar } from "./toolbar";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-// Define the extended ColumnMeta type
-type ExtendedColumnMeta = {
-  responsiveHidden?: boolean;
-};
-
-const getInitialVisibility = (columns: ColumnDef<any, any>[]) => {
-  const initialState: Record<string, boolean> = {};
-
-  columns.forEach((column) => {
-    // Assuming you add a `responsiveHidden` property to columns you want hidden on mobile
-    if (typeof column.id === "string") {
-      initialState[column.id] = !(column.meta as ExtendedColumnMeta)
-        ?.responsiveHidden;
-    }
-  });
-
-  return initialState;
-};
-
-const openProtocolReview = (slug: string) => {
-  window.location.href = slug;
-};
+const openProtocolReview = (slug: string) => (window.location.href = slug);
 
 const useResponsiveColumns = (
   table: TableType<any>,
@@ -185,7 +161,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="w-full">
-      <DataTableToolbar chains={chains} types={types} table={table} />
+      <DataTableToolbar table={table} />
       <Table className="">
         <TableHeader className="font-mono">
           {table.getHeaderGroups().map((headerGroup) => (

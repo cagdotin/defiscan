@@ -19,6 +19,9 @@ interface DataTableViewOptionsProps<TData> {
   className?: string;
 }
 
+// #is/feature/idea
+// TODO: integrate or remove this option.
+
 export function DataTableViewOptions<TData>({
   table,
   className,
