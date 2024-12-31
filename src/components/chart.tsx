@@ -16,6 +16,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { ChainTvlData, defiLlama } from "@/services/defillama";
+import { cn } from "@/lib/utils";
 
 const chartConfig = {
   tvl: {
@@ -40,7 +41,7 @@ const Chart: React.FC<ChartProps> = ({ className }) => {
   }, []);
 
   return (
-    <Card className={className}>
+    <Card className={cn("", className)}>
       <CardHeader>
         <CardDescription className="flex items-center">
           <span>Total Value Locked (TVL) in DeFi</span>

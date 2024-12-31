@@ -7,6 +7,7 @@ import { Container } from "./container";
 import { Button } from "./ui/button";
 import { FaGithub } from "react-icons/fa";
 import { FaX, FaXTwitter } from "react-icons/fa6";
+import { ModeToggle } from "./mode-toggle";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -45,15 +46,6 @@ export default function Navbar() {
                   Learn more
                 </Link>
               </Button>
-              {/* <div>
-                <Button variant="ghost" className="border-r h-16 w-16">
-                  <FaGithub />
-                </Button>
-                <Button variant="ghost" className="h-16 w-16">
-                  <FaXTwitter />
-                </Button>
-              </div> */}
-
               <div className="h-full">
                 <Button
                   asChild
@@ -67,19 +59,8 @@ export default function Navbar() {
                   </Link>
                 </Button>
               </div>
-
-              {/* <Button
-                asChild
-                className="h-16 rounded-3xl hover:rounded-none transition-all"
-              >
-                <Link
-                  href="/submit-review"
-                  className="text-sm font-medium text-muted-foreground transition-colors"
-                >
-                  Submit Review
-                </Link>
-              </Button> */}
             </nav>
+            <ModeToggle />
 
             {/* Mobile Menu Button */}
             <button

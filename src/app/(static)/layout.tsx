@@ -6,7 +6,9 @@ export default function LegalLayout({ children }: { children: ReactNode }) {
   return (
     <Section>
       <Container className="py-10">
-        <div className="prose mx-auto max-w-none px-2 md:px-8">{children}</div>
+        <div className="prose dark:prose-invert mx-auto max-w-none px-2 md:px-8">
+          {children}
+        </div>
       </Container>
     </Section>
   );

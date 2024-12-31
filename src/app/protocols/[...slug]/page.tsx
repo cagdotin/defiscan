@@ -283,7 +283,7 @@ export default async function ProtocolPageItem({
             </div>
           </div>
           <div className="pt-4 px-2 md:px-8 grow w-1/2">
-            <div className="prose max-w-none">
+            <div className="prose dark:prose-invert max-w-none">
               <Mdx code={protocol.body!} />
             </div>
           </div>
