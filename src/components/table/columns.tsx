@@ -14,9 +14,9 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { Project, RiskArray, Stage } from "@/lib/types";
-import { InfoBadge } from "../ui/info-badge";
+import { StageBadge } from "@/components/stage";
 import { Avatar } from "../ui/avatar";
-import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { AvatarImage } from "@radix-ui/react-avatar";
 import { Chain, ChainNames } from "../ui/chain";
 
 export interface FilterOption {
@@ -180,22 +180,8 @@ export const columns: ColumnDef<Project>[] = [
       }
 
       return (
-        <div className="w-full flex">
-          <TooltipProvider>
-            <InfoBadge
-              stage={stage}
-              className={cn(
-                "text-white py-1 rounded mx-auto bg-gray-500",
-                stage === 0 && "bg-red-500",
-                stage === 1 && "bg-yellow-500",
-                stage === 2 && "bg-green-500"
-              )}
-            >
-              {stage === "R" && "Review"}
-              {stage === "V" && "Variable"}
-              {typeof stage === "number" && "Stage" + stage}
-            </InfoBadge>
-          </TooltipProvider>
+        <div className="w-full flex justify-center">
+          <StageBadge stage={stage} />
         </div>
       );
     },

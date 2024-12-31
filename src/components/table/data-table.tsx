@@ -160,7 +160,7 @@ export function DataTable<TData, TValue>({
   useResponsiveColumns(table);
 
   return (
-    <div className="w-full">
+    <div className="w-full min-h-[600px]">
       <DataTableToolbar table={table} />
       <Table className="">
         <TableHeader className="font-mono">
