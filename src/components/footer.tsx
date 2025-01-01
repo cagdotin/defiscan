@@ -75,9 +75,6 @@ export const Footer = () => {
           </div>
         </Container>
       </Section>
-      <Section className="border-none">
-        <Container className="h-8 border-dashed"></Container>
-      </Section>
     </footer>
   );
 };

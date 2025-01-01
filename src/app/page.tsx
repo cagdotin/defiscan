@@ -7,32 +7,31 @@ import { Container } from "@/components/container";
 
 const Header = () => {
   return (
-    <div className="flex flex-col-reverse md:flex-row w-full border-b">
-      <div className="md:border-r md:w-1/2  border-t md:border-t-0">
-        <h1 className="my-auto text-primary font-bold text-3xl sm:text-4xl  px-8 py-12">
-          Verifiable insights
-          <br />
-          <small>into the maturity and risks of DeFi</small>
-        </h1>
-      </div>
-      <div className="pb-2 md:w-1/2">
-        <Chart className="w-full border-none shadow-none" />
-      </div>
+    <div className="md:border-r-0 md:w-2/2  border-t md:border-t-0 border-b">
+      <h1 className="my-auto text-primary font-bold text-3xl md:text-5xl lg:text-5xl px-8 py-12">
+        Verifiable insights
+        <br />
+        <span>into the maturity and risks of</span>
+        <br /> DeFi
+      </h1>
     </div>
   );
 };
 
 const DefiStats = () => {
   return (
-    <div className="md:w-full flex flex-col">
-      <div className="flex flex-wrap">
+    <div className="flex flex-col md:flex-row">
+      <div className="pb-2 shrink-0 border-b md:w-1/2 md:border-r md:border-b-0">
+        <Chart className="w-full border-none shadow-none" />
+      </div>
+      <div className="flex flex-wrap md:w-1/2">
         <PieChartComponent
           groupByKey="stage"
           operation="count"
           baseColor="#ae7ef4"
           chartTitle="#Projects by Stage"
           labelValueDescription="Stage-2"
-          className="w-1/2 md:w-1/4 border-r border-b md:border-b-0"
+          className="w-1/2  border-r border-b"
         />
         <PieChartComponent
           groupByKey="stage"
@@ -40,7 +39,7 @@ const DefiStats = () => {
           baseColor="#ae7ef4"
           chartTitle="TVL by Stage"
           labelValueDescription="Total TVL"
-          className="w-1/2 md:w-1/4 border-b md:border-b-0 md:border-r"
+          className="w-1/2  border-b"
         />
 
         <PieChartComponent
@@ -49,7 +48,7 @@ const DefiStats = () => {
           baseColor="#ae7ef4"
           chartTitle="Projects by Chain"
           labelValueDescription="Top Source"
-          className="w-1/2 md:w-1/4 border-r"
+          className="w-1/2  border-r"
         />
         <PieChartComponent
           groupByKey="chain"
@@ -57,7 +56,7 @@ const DefiStats = () => {
           baseColor="#ae7ef4"
           chartTitle="TVL by Chain"
           labelValueDescription="Most TVL"
-          className="w-1/2 md:w-1/4"
+          className="w-1/2 "
         />
       </div>
     </div>
@@ -80,9 +79,6 @@ export default function Home() {
           <Table />
           <div className="grow" />
         </Container>
-      </Section>
-      <Section className="grow h-full flex">
-        <Container className="min-h-full"></Container>
       </Section>
     </>
   );

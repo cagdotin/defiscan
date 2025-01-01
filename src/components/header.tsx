@@ -19,9 +19,9 @@ export default function Navbar() {
 
   return (
     <header className="">
-      <Section className="border-none">
+      {/* <Section className="border-none">
         <Container className="h-8 border-dashed"></Container>
-      </Section>
+      </Section> */}
       <Section className="border-t">
         <Container className="px-0 md:px-0">
           <div className="flex h-12 items-center">
@@ -41,19 +41,16 @@ export default function Navbar() {
               <Button asChild variant="ghost">
                 <Link
                   href="/learn-more"
-                  className="w-28 text-muted-foreground hover:text-primary text-xs transition-colors px-4 h-full flex items-center border-r"
+                  className="w-28  text-xs px-4 h-full flex items-center border-x"
                 >
                   Learn more
                 </Link>
               </Button>
-              <div className="h-full">
-                <Button
-                  asChild
-                  className="h-full w-32 hover:rounded-none transition text-xs  ease-in-out duration-600"
-                >
+              <div className="h-full bg-gray-800 dark:bg-gray-900">
+                <Button variant="ghost" asChild>
                   <Link
                     href="/submit-review"
-                    className="text-muted-foreground transition-colors"
+                    className="h-full w-32 text-xs bg-background duration-600 border-r"
                   >
                     Submit Review
                   </Link>

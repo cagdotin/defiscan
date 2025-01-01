@@ -8,8 +8,6 @@ interface SectionProps {
 
 export const Section = ({ children, className }: SectionProps) => {
   return (
-    <div className={cn("px-4 sm:px-8 md:px-16 border-b", className)}>
-      {children}
-    </div>
+    <div className={cn("px-4 sm:px-8 md:px-16 ", className)}>{children}</div>
   );
 };

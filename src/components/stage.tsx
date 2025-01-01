@@ -18,9 +18,9 @@ export function StageBadge({ className, stage }: BadgeProps) {
           variant="outline"
           className={cn(
             "border-none text-white rounded mx-auto bg-gray-500 hover:bg-gray-600 flex justify-center",
-            stage === 0 && "bg-red-500 hover:bg-red-600",
-            stage === 1 && "bg-yellow-500 hover:bg-yellow-600",
-            stage === 2 && "bg-green-500 hover:bg-green-600",
+            stage === 0 && "bg-red-secondary hover:bg-red-primary",
+            stage === 1 && "bg-yellow-secondary hover:bg-yellow-primary",
+            stage === 2 && "bg-green-secondary hover:bg-green-primary",
             className
           )}
         >

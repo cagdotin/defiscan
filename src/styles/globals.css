@@ -36,6 +36,24 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    /* Extended colors */
+    --red-primary: 3 62% 42%;
+    --red-secondary: 5 61% 54%;
+    --orange-primary: 22 80% 41%;
+    --orange-secondary: 23 70% 51%;
+    --yellow-primary: 45 99% 34%;
+    --yellow-secondary: 45 82% 45%;
+    --green-primary: 73 84% 27%;
+    --green-secondary: 72 46% 41%;
+    --cyan-primary: 175 57% 33%;
+    --cyan-secondary: 175 49% 45%;
+    --blue-primary: 212 68% 39%;
+    --blue-secondary: 208 49% 50%;
+    --purple-primary: 259 42% 43%;
+    --purple-secondary: 251 40% 64%;
+    --magenta-primary: 326 55% 41%;
+    --magenta-secondary: 329 54% 59%;
   }
 
   .dark {
@@ -58,25 +76,52 @@
     --input: 187 3% 12%;
     --ring: 187 78% 39%; */
 
-    --primary: 262 83% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 157 78% 39%;
-    --secondary-foreground: 0 0% 100%;
-    --background: 187 36% 2%;
-    --foreground: 187 30% 97%;
-    --card: 187 36% 3%;
-    --card-foreground: 187 30% 98%;
-    --popover: 187 36% 2%;
-    --popover-foreground: 187 30% 97%;
-    --muted: 157 25% 9%;
-    --muted-foreground: 157 6% 71%;
-    --accent: 262 45% 49%;
-    --accent-foreground: 217 78% 99%;
-    --destructive: 6 90% 46%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 187 13% 12%;
-    --input: 187 13% 12%;
-    --ring: 262 83% 58%;
+    --background: 0 3% 6%;
+    --foreground: 55 10% 79%;
+    --card: 0 3% 6%;
+    --card-foreground: 55 10% 79%;
+    --popover: 0 3% 6%;
+    --popover-foreground: 55 10% 79%;
+
+    /* --primary: 55 10% 79%; */
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 0 3% 6%;
+
+    --secondary: 30 4% 11%;
+    --secondary-foreground: 55 10% 79%;
+    --muted: 30 4% 11%;
+    --muted-foreground: 43 3% 52%;
+    --accent: 30 4% 11%;
+    --accent-foreground: 55 10% 79%;
+    --destructive: 3 62% 42%;
+    --destructive-foreground: 0 3% 6%;
+    --border: 30 3% 15%;
+    --input: 30 3% 15%;
+    --ring: 30 3% 24%;
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Extended colors */
+    --red-primary: 5 61% 54%;
+    --red-secondary: 3 62% 42%;
+    --orange-primary: 23 70% 51%;
+    --orange-secondary: 22 80% 41%;
+    --yellow-primary: 45 82% 45%;
+    --yellow-secondary: 45 99% 34%;
+    --green-primary: 72 46% 41%;
+    --green-secondary: 73 84% 27%;
+    --cyan-primary: 175 49% 45%;
+    --cyan-secondary: 175 57% 33%;
+    --blue-primary: 208 49% 50%;
+    --blue-secondary: 212 68% 39%;
+    --purple-primary: 251 40% 64%;
+    --purple-secondary: 259 42% 43%;
+    --magenta-primary: 329 54% 59%;
+    --magenta-secondary: 326 55% 41%;
   }
 }
 
