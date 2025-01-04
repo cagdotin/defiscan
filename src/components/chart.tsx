@@ -47,7 +47,7 @@ const Chart: React.FC<ChartProps> = ({ className }) => {
           <span>Total Value Locked (TVL) in DeFi</span>
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-0">
+      <CardContent className="p-1">
         <ChartContainer
           config={chartConfig}
           className="aspect-auto h-[200px] w-full"

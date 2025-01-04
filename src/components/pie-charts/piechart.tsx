@@ -189,7 +189,7 @@ export const PieChartComponent: React.FC<PieChartProps> = ({
 
   return (
     <div className={className}>
-      <Card className="flex flex-col border-none shadow-none">
+      <Card className="flex flex-col shadow-none h-full">
         <CardHeader className="items-center p-2 pt-4">
           <CardTitle className="text-xs md:text-xs font-mono font-normal text-nowrap">
             {chartTitle}
