@@ -6,6 +6,7 @@ import { MultiSelectFilter } from "./multi-select-filter";
 import { Search, X } from "lucide-react";
 import { Table } from "@tanstack/react-table";
 import { chains, types } from "../columns";
+import { Separator } from "@/components/ui/separator";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -13,7 +14,7 @@ interface DataTableToolbarProps<TData> {
 
 function SearchBar<TData>({ table }: { table: Table<TData> }) {
   return (
-    <div className="relative w-full h-full">
+    <div className="relative max-w-80 w-full h-9">
       <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 z-10" />
       <Input
         placeholder="Filter Protocols..."
@@ -21,7 +22,7 @@ function SearchBar<TData>({ table }: { table: Table<TData> }) {
         onChange={(event) =>
           table.getColumn("protocol")?.setFilterValue(event.target.value)
         }
-        className="pl-10 pr-3 py-2 text-sm w-full h-full focus:outline-none border-0"
+        className="pl-10 pr-3 py-2 text-sm w-full h-full border-border focus:outline-none "
       />
     </div>
   );
@@ -33,13 +34,12 @@ export function DataTableToolbar<TData>({
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between border-b">
-      <div className="w-full md:w-1/2 grow h-12 flex items-center md:border-r">
+    <div className="flex flex-col md:flex-row items-center justify-between border-b h-16">
+      <div className="w-full md:w-1/2 grow h-full flex items-center gap-2 px-4">
         <SearchBar table={table} />
 
         {table.getColumn("chain") && (
           <MultiSelectFilter
-            className="h-full border-0 border-x"
             column={table.getColumn("chain")}
             title="Chains"
             options={chains}
@@ -48,27 +48,26 @@ export function DataTableToolbar<TData>({
 
         {table.getColumn("type") && (
           <MultiSelectFilter
-            className="h-full"
             column={table.getColumn("type")}
             title="Types"
             options={types}
           />
         )}
-      </div>
-      <div className="hidden md:flex w-1/2 flex h-12">
+
+        {/* <div className="grow-1" /> */}
+
         {isFiltered && (
           <>
-            <div className="w-full grow md:border-r" />
-            <div className="ml-auto w-1/4 shrink-0">
-              <Button
-                variant="ghost"
-                onClick={() => table.resetColumnFilters()}
-                className="h-full border-0  uppercase w-full justify-between"
-              >
-                Reset
-                <X className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
+            <Separator orientation="vertical" className="h-9" />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => table.resetColumnFilters()}
+              className="text-xs uppercase justify-between border-border px-2"
+            >
+              Reset
+              <X className="w-4 h-4 ml-2" />
+            </Button>
           </>
         )}
       </div>

@@ -105,8 +105,12 @@ export function MultiSelectFilter<TData, TValue>({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="ghost"
-          className={cn("uppercase text-xs font-bold font-mono", className)}
+          variant="outline"
+          size="sm"
+          className={cn(
+            "uppercase text-xs font-bold font-mono border-dashed border-border",
+            className
+          )}
         >
           <span>{title}</span>
           <ChevronDown className="w-4 h-4 ml-1" />

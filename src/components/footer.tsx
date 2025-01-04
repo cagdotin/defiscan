@@ -8,8 +8,8 @@ import { Button } from "./ui/button";
 export const Footer = () => {
   return (
     <footer>
-      <Section>
-        <Container className="flex flex-col sm:flex-row justify-between items-center px-0 gap-4 md:px-0">
+      <Section className="border-t">
+        <Container className="flex flex-col sm:flex-row justify-between items-center gap-4 h-20 ">
           <div className="text-gray-500 text-xs font-mono mt-4 sm:mt-0 px-4">
             &copy; {new Date().getFullYear()}{" "}
             <a
@@ -36,7 +36,7 @@ export const Footer = () => {
             </a>
           </div>
           <div className="flex">
-            <Button variant="ghost" className="sm:border-x h-12 w-12" asChild>
+            <Button variant="ghost" size="icon" asChild>
               <a
                 href="https://x.com/defiscan_info"
                 target="_blank"
@@ -45,7 +45,7 @@ export const Footer = () => {
                 <FaXTwitter />
               </a>
             </Button>
-            <Button variant="ghost" className="sm:border-r h-12 w-12" asChild>
+            <Button variant="ghost" size="icon" asChild>
               <a
                 href="https://www.linkedin.com/company/defi-collective"
                 target="_blank"
@@ -54,7 +54,7 @@ export const Footer = () => {
                 <FaLinkedinIn />
               </a>
             </Button>
-            <Button variant="ghost" className="sm:border-r h-12 w-12" asChild>
+            <Button variant="ghost" size="icon" asChild>
               <a
                 href="https://discord.gg/Z467Ehv6VU"
                 target="_blank"
@@ -63,7 +63,7 @@ export const Footer = () => {
                 <FaDiscord />
               </a>
             </Button>
-            <Button variant="ghost" className="h-12 w-12" asChild>
+            <Button variant="ghost" size="icon" asChild>
               <a
                 href="https://github.com/deficollective/defiscan"
                 target="_blank"

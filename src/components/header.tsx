@@ -18,13 +18,10 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="">
-      {/* <Section className="border-none">
-        <Container className="h-8 border-dashed"></Container>
-      </Section> */}
+    <header className="sticky top-0 z-50 bg-background">
       <Section className="border-t">
-        <Container className="px-0 md:px-0">
-          <div className="flex h-12 items-center">
+        <Container className="py-4">
+          <div className="flex h-12 items-center gap-1">
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center text-primary">
@@ -38,24 +35,18 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center ml-auto h-full">
-              <Button asChild variant="ghost">
-                <Link
-                  href="/learn-more"
-                  className="w-28  text-xs px-4 h-full flex items-center border-x"
-                >
-                  Learn more
-                </Link>
-              </Button>
-              <div className="h-full bg-gray-800 dark:bg-gray-900">
-                <Button variant="ghost" asChild>
-                  <Link
-                    href="/submit-review"
-                    className="h-full w-32 text-xs bg-background duration-600 border-r"
-                  >
-                    Submit Review
-                  </Link>
-                </Button>
-              </div>
+              <Link
+                href="/learn-more"
+                className="text-xs px-4 h-full flex items-center hover:underline"
+              >
+                Learn more
+              </Link>
+              <Link
+                href="/submit-review"
+                className="text-xs h-full flex items-center px-4 hover:underline"
+              >
+                Submit Review
+              </Link>
             </nav>
             <ModeToggle />
 
