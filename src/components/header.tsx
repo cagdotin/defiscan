@@ -48,7 +48,7 @@ export default function Navbar() {
                 Submit Review
               </Link>
             </nav>
-            <ModeToggle />
+            {/* <ModeToggle /> */}
 
             {/* Mobile Menu Button */}
             <button
