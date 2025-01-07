@@ -4,6 +4,7 @@ import Table from "@/components/table/page";
 import { PieChartComponent } from "@/components/pie-charts/piechart";
 import { Section } from "@/components/section";
 import { Container } from "@/components/container";
+import { PieChart } from "@/components/charts/pie-chart";
 
 const DefiStats = () => {
   return (
@@ -12,6 +13,7 @@ const DefiStats = () => {
         <Chart className="shadow-none" />
       </div>
       <div className="grid grid-cols-2 md:w-1/2 p-4 gap-2">
+        {/* <PieChart /> */}
         <PieChartComponent
           groupByKey="stage"
           operation="count"

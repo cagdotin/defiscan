@@ -36,7 +36,7 @@ export function BigPizzaRosette(props: BigPizzaRosetteProps) {
     return (
       <div
         className={cn(
-          "relative h-[284px] w-[272px] whitespace-pre p-12 text-center text-xs font-medium uppercase leading-tight",
+          "relative h-[200px] w-[200px] whitespace-pre p-8 text-center text-xs font-medium uppercase leading-tight",
           props.className
         )}
       >
@@ -47,7 +47,7 @@ export function BigPizzaRosette(props: BigPizzaRosetteProps) {
         />
         <PizzaRosetteLabels
           values={props.values}
-          containerSize={272}
+          containerSize={252}
           textRadius={102}
         />
       </div>

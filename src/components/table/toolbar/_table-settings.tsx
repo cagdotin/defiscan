@@ -44,7 +44,7 @@ export function DataTableSettings({ className }: DataTableSettingsProps) {
                 <CommandItem
                   key={s.key}
                   onSelect={() => {
-                    console.log(`toggle:table-setting::${s.key}`);
+                    // console.log(`toggle:table-setting::${s.key}`);
                   }}
                 >
                   <div

@@ -100,6 +100,7 @@ const extendWithColor = (
   baseColor: string
 ): VisualisedData[] => {
   const colorPalette = generateColorPalette(baseColor, aggregatedData.length);
+
   return aggregatedData.map((data, index) => ({
     ...data,
     fill: colorPalette[index % colorPalette.length],
@@ -198,14 +199,14 @@ export const PieChartComponent: React.FC<PieChartProps> = ({
         <CardContent className="flex-1 pb-0">
           <ChartContainer
             config={chartConfig}
-            className="mx-auto aspect-square h-[120px]"
+            // className="mx-auto aspect-square h-[120px]"
+
+            className="mx-auto aspect-square max-h-[120px]"
           >
             <PieChart>
               <ChartTooltip
                 cursor={false}
-                content={
-                  <ChartTooltipContent hideLabel className="min-w-[8rem]" />
-                }
+                content={<ChartTooltipContent hideLabel />}
               />
               <Pie
                 data={data}
@@ -262,6 +263,7 @@ export const PieChartComponent: React.FC<PieChartProps> = ({
     </div>
   );
 };
+
 export async function mergeDefiLlamaWithMd() {
   const apiData = await defiLlama.getProtocolsWithCache();
   const filtered = protocols

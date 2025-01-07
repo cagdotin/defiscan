@@ -73,7 +73,6 @@ export const columns: ColumnDef<Project>[] = [
   {
     accessorKey: "protocol",
     header: ({ column }) => {
-      console.log(column.getSize());
       return (
         <Button
           className="text-left justify-start text-xs md:text-sm  h-16 !w-full"

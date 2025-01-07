@@ -157,6 +157,7 @@ export function MultiSelectFilter<TData, TValue>({
             <CommandGroup>
               {options.map((option) => (
                 <Option
+                  key={`option-${option.label}`}
                   option={option}
                   selected={selectedValues.has(option.value)}
                   onSelect={() => handleOptionSelect(option)}
