@@ -4,7 +4,6 @@ import Table from "@/components/table/page";
 import { PieChartComponent } from "@/components/pie-charts/piechart";
 import { Section } from "@/components/section";
 import { Container } from "@/components/container";
-import { PieChart } from "@/components/charts/pie-chart";
 
 const DefiStats = () => {
   return (
