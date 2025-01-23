@@ -34,8 +34,8 @@ export function DataTableToolbar<TData>({
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between border-b h-16">
-      <div className="w-full md:w-1/2 grow h-full flex items-center gap-2 px-4">
+    <div className="flex flex-col md:flex-row items-center justify-between h-16">
+      <div className="w-full md:w-1/2 grow h-full flex items-center gap-2">
         <SearchBar table={table} />
 
         {table.getColumn("chain") && (

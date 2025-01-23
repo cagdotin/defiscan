@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 export const Footer = () => {
   return (
     <footer>
-      <Section className="border-t">
+      <Section className="">
         <Container className="flex flex-col sm:flex-row justify-between items-center gap-4 h-20 ">
           <div className="text-gray-500 text-xs font-mono mt-4 sm:mt-0 px-4">
             &copy; {new Date().getFullYear()}{" "}

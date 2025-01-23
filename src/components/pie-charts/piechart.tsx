@@ -201,7 +201,7 @@ export const PieChartComponent: React.FC<PieChartProps> = ({
             config={chartConfig}
             // className="mx-auto aspect-square h-[120px]"
 
-            className="mx-auto aspect-square max-h-[120px]"
+            className="mx-auto aspect-square max-h-[140px] pb-4"
           >
             <PieChart>
               <ChartTooltip

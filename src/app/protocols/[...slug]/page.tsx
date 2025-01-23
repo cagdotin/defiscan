@@ -271,7 +271,7 @@ export default async function ProtocolPageItem({
   return (
     <article className="w-full flex flex-col">
       <Section>
-        <Container className=" py-4">
+        <Container className="pt-4 pb-2">
           <div className="grid gap-2 grid-cols-4 lg:grid-rows-1">
             <div className="flex flex-col col-span-full sm:col-span-2 lg:col-span-1">
               <div className="flex flex-col w-full gap-2">
@@ -311,14 +311,13 @@ export default async function ProtocolPageItem({
       </Section>
       <Section className="border-b-0">
         <Container className="flex flex-row gap-2">
-          <aside className="hidden lg:block w-1/4 shrink-0 border-r py-4">
+          <aside className="hidden lg:block w-1/4 shrink-0 pb-4 pr-2">
+            <h2 className="py-6 pl-1 font-semibold">Table of Contents</h2>
             <div className="sticky top-24 z-50 flex flex-col gap-2">
-              <Card className="border-none shadow-none">
-                <CardHeader>Table of Contents</CardHeader>
-                <CardContent>
+              <Card className="shadow-none">
+                <CardContent className="pt-4">
                   <div className="text-sm">
                     <TableOfContents protocol={protocol} />
-                    <Separator className="mt-8" />
                   </div>
                 </CardContent>
               </Card>

@@ -75,8 +75,9 @@ export const columns: ColumnDef<Project>[] = [
     header: ({ column }) => {
       return (
         <Button
-          className="text-left justify-start text-xs md:text-sm  h-16 !w-full"
+          className="text-left justify-start text-xs h-8 !w-full"
           variant="ghost"
+          size="sm"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Protocol
@@ -87,28 +88,25 @@ export const columns: ColumnDef<Project>[] = [
     cell: ({ row }) => {
       const { logo, protocol } = row.original;
 
-      if (row.depth > 0) return null;
-
       return (
         <div className="flex gap-2 items-center">
-          {row.depth === 0 && (
-            <Avatar className="border">
-              <AvatarImage src={logo} alt={protocol || ""} />
-            </Avatar>
-          )}
+          <Avatar className={cn("border", row.depth > 0 && "w-8 h-8 ml-4")}>
+            <AvatarImage src={logo} alt={protocol || ""} />
+          </Avatar>
           <span>{protocol}</span>
         </div>
       );
     },
     sortingFn: "alphanumeric", // use built-in sorting function by name
   },
+
   {
     accessorKey: "chain",
     header: ({ column }) => {
       return (
         <Button
           // Remove hidden class to prevent layout shift
-          className="md:flex hidden w-0 md:w-auto overflow-hidden h-16 !w-full"
+          className="md:flex text-xs hidden w-0 md:w-auto overflow-hidden h-8 !w-full"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -158,11 +156,42 @@ export const columns: ColumnDef<Project>[] = [
     },
   },
   {
+    accessorKey: "type",
+    header: ({ column }) => {
+      return (
+        <Button
+          // Remove hidden class to prevent layout shift
+          className="md:flex hidden w-0 md:w-auto overflow-hidden h-8 !w-full text-xs"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          <span className="hidden md:inline">Type</span>
+          <ArrowUpDown className="ml-2 h-4 w-4 hidden md:inline" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap text-center text-xs">
+          <span className="hidden md:inline">{row.getValue("type")}</span>
+        </div>
+      );
+    },
+    sortingFn: "alphanumeric",
+    meta: {
+      responsiveHidden: true, // This column will hide on mobile
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+  },
+
+  {
     accessorKey: "stage",
     header: ({ column }) => {
       return (
         <Button
-          className="text-xs md:text-sm  h-16 !w-full"
+          className="text-xs h-8 !w-full"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -189,7 +218,7 @@ export const columns: ColumnDef<Project>[] = [
   {
     accessorKey: "risks",
     header: ({ column }) => {
-      return <p className="text-xs md:text-sm">Risks</p>;
+      return <p className="text-xs">Risks</p>;
     },
     cell: ({ row }) => {
       const risks = row.getValue("risks") as RiskArray;
@@ -212,42 +241,12 @@ export const columns: ColumnDef<Project>[] = [
     },
   },
   {
-    accessorKey: "type",
-    header: ({ column }) => {
-      return (
-        <Button
-          // Remove hidden class to prevent layout shift
-          className="md:flex hidden w-0 md:w-auto overflow-hidden h-16 !w-full"
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          <span className="hidden md:inline">Type</span>
-          <ArrowUpDown className="ml-2 h-4 w-4 hidden md:inline" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      return (
-        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap text-center">
-          <span className="hidden md:inline">{row.getValue("type")}</span>
-        </div>
-      );
-    },
-    sortingFn: "alphanumeric",
-    meta: {
-      responsiveHidden: true, // This column will hide on mobile
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    },
-  },
-  {
     accessorKey: "tvl",
     header: ({ column }) => {
       return (
         <Button
           // Remove hidden class to prevent layout shift
-          className="md:flex hidden w-0 md:w-auto overflow-hidden h-16 !w-full"
+          className="md:flex hidden w-0 md:w-auto overflow-hidden h-8 !w-full text-xs justify-end"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -258,7 +257,7 @@ export const columns: ColumnDef<Project>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap">
+        <div className="w-0 md:w-auto overflow-hidden whitespace-nowrap text-right">
           <span className="hidden md:inline">
             {formatUsd(row.getValue("tvl"))}
           </span>

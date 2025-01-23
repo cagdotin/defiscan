@@ -69,6 +69,7 @@ const renderTableBody = <TData, TValue>(
   columns: ColumnDef<TData, TValue>[]
 ) => {
   if (table.getRowModel().rows?.length) {
+    // console.log(table.getRowModel().rows);
     return table.getRowModel().rows.map((row) => {
       const handleClick = () => {
         // Expand the row if it is expandable.
@@ -81,18 +82,27 @@ const renderTableBody = <TData, TValue>(
         openProtocolReview((row as any).original.slug);
       };
 
+      const expanded = row.getIsExpanded();
+      console.log("exp", expanded);
+
       return (
+        // <div className="w-full border rounded-md flex mb-2">
         <TableRow
           key={row.id}
           onClick={handleClick}
-          className={cn(row.depth > 0 && "bg-gray-400/40 hover:bg-gray-400/60")}
+          className={cn(
+            "rounded-md border-b-0 border mt-2",
+            expanded && "bg-muted",
+            row.depth > 0 && "bg-gray-100 hover:bg-gray-200 py-4"
+          )}
         >
           {row.getVisibleCells().map((cell) => (
-            <TableCell key={cell.id}>
+            <TableCell key={cell.id} className={cell.column.id}>
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
             </TableCell>
           ))}
         </TableRow>
+        // </div>
       );
     });
   }
@@ -159,15 +169,17 @@ export function DataTable<TData, TValue>({
 
   useResponsiveColumns(table);
 
+  // console.log(expanded);
+
   return (
-    <div className="w-full min-h-[600px]">
+    <div className="min-h-[600px] mx-4">
       <DataTableToolbar table={table} />
-      <Table className="">
-        <TableHeader className="font-mono">
+      <Table className="protocols table-auto border-separate border-spacing-y-1">
+        <TableHeader className="mb-2 font-mono">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id} className="hover:bg-background">
+            <TableRow key={headerGroup.id} className="">
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id} className="border-b p-0">
+                <TableHead key={header.id} className="p-0">
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()

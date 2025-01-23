@@ -4,15 +4,24 @@ import Table from "@/components/table/page";
 import { PieChartComponent } from "@/components/pie-charts/piechart";
 import { Section } from "@/components/section";
 import { Container } from "@/components/container";
+import { Button } from "@/components/ui/button";
 
 const DefiStats = () => {
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className="shrink-0 border-b md:w-1/2 md:border-b-0 p-4 md:pr-0 grid grid-flow-row grid-rows-min gap-4">
+    <div className="grid grid-flow-row gap-2 p-4 ">
+      <div className="shrink-0 w-full grid grid-flow-row md:grid-cols-2 gap-2">
+        <div className="flex p-4 border rounded-md flex-row justify-between items-center">
+          <h1 className="text-primary font-bold text-xl lg:text-2xl px-2 ">
+            Verifiable insights
+            <br />
+            into the maturity and risks of DeFi
+          </h1>
+        </div>
+
         <Chart className="shadow-none" />
+        {/* <Chart className="shadow-none" /> */}
       </div>
-      <div className="grid grid-cols-2 md:w-1/2 p-4 gap-2">
-        {/* <PieChart /> */}
+      <div className="grid grid-cols-2  md:grid-cols-4 w-full gap-2">
         <PieChartComponent
           groupByKey="stage"
           operation="count"
@@ -56,20 +65,12 @@ export default function Home() {
     <>
       <Section>
         <Container className="px-0 md:px-0">
-          <div className="pt-8 md:pt-12 pb-8 px-4 border-b md:border-b-0">
-            <h1 className="text-primary font-bold text-2xl lg:text-3xl px-2 ">
-              Verifiable insights
-              <br />
-              into the maturity and risks of DeFi
-            </h1>
-          </div>
           <DefiStats />
         </Container>
       </Section>
       <Section className="border-0">
-        <Container className="px-0 md:px-0">
+        <Container className="px-0 md:px-0 pb-4">
           <Table />
-          <div className="grow" />
         </Container>
       </Section>
     </>

@@ -6,7 +6,7 @@ import App from "@/components/app";
 import Head from "next/head";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-// import { ThemeProvider } from "@/providers/theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: {
@@ -33,14 +33,14 @@ export default function RootLayout({
           "min-h-screen w-full max-w-screen antialiased flex flex-col"
         )}
       >
-        {/* <ThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        > */}
-        <App>{children}</App>
-        {/* </ThemeProvider> */}
+        >
+          <App>{children}</App>
+        </ThemeProvider>
       </body>
     </html>
   );

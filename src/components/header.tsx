@@ -18,17 +18,17 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-background">
-      <Section className="border-t">
-        <Container className="py-4">
-          <div className="flex h-12 items-center gap-1">
+    <header className="sticky top-0 z-50 px-4 pt-2">
+      <Section className="">
+        <Container className="py-4 border rounded-md bg-background/80 backdrop-blur-md px-0">
+          <div className="flex h-8 items-center gap-1">
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center text-primary">
                 <img
                   src="/images/defiscan_by_dc_color_for_light_background.svg"
                   alt="Logo"
-                  className="w-40 md:w-48"
+                  className="w-28 md:w-32"
                 />
               </Link>
             </div>
@@ -48,7 +48,7 @@ export default function Navbar() {
                 Submit Review
               </Link>
             </nav>
-            {/* <ModeToggle /> */}
+            <ModeToggle />
 
             {/* Mobile Menu Button */}
             <button
