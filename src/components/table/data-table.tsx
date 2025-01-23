@@ -156,6 +156,7 @@ export function DataTable<TData, TValue>({
     // @ts-expect-error
     getRowCanExpand: (row) => row?.children,
     onExpandedChange: setExpanded,
+    manualPagination: true,
 
     initialState: {
       sorting: [

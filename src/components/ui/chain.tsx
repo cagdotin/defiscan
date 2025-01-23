@@ -22,6 +22,11 @@ const chains = {
     fallback: "ARB",
     alt: "Arbitrum Logo",
   },
+  Polygon: {
+    logo: "images/chains/polygon.svg",
+    fallback: "POL",
+    alt: "Polygon Logo",
+  },
 };
 
 export type ChainNames = keyof typeof chains;
